@@ -1,0 +1,13 @@
+ports:
+  - protocol: "HTTPS"
+    targetProtocol: "HTTP"
+    listeningPort: "443"
+    targetPort: "3000"
+    public: true
+    path: "/"
+    isAuth: false
+    login: ""
+    password: ""
+environments:
+  - key: "SOFTWARE_VERSION_TAG"
+    value: "latest"
