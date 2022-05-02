@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  metabase:
+    image: metabase/metabase:${SOFTWARE_VERSION_TAG}
+    container_name: metabase
+    restart: unless-stopped
+    environment:
+      - MB_DB_FILE=/metabase-data/metabase.db
+      - MB_ANON_TRACKING_ENABLED=false
+      - MB_ENABLE_EMBEDDING=true
+      - MB_ENABLE_PUBLIC_SHARING=true
+      - MB_ENABLE_QUERY_CACHING=true
+      - MB_SITE_URL=https://[CI_CD_DOMAIN]
+    volumes:
+      - ./files:/opt/app/files
+      - ./data:/metabase-data
+      - ./plugins:/plugins
+    ports:
+      - '172.17.0.1:3000:3000'
