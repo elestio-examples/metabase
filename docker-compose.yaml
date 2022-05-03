@@ -2,7 +2,6 @@ version: "3.3"
 services:
   metabase:
     image: metabase/metabase:${SOFTWARE_VERSION_TAG}
-    container_name: metabase
     restart: unless-stopped
     environment:
       - MB_DB_FILE=/metabase-data/metabase.db
@@ -16,4 +15,4 @@ services:
       - ./data:/metabase-data
       - ./plugins:/plugins
     ports:
-      - '172.17.0.1:3000:3000'
+      - '172.17.0.1:3003:3000'
