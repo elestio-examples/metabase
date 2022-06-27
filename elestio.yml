@@ -3,6 +3,7 @@ ports:
     targetProtocol: "HTTP"
     listeningPort: "443"
     targetPort: "3003"
+    targetIP: "172.17.0.1"
     public: true
     path: "/"
     isAuth: false
