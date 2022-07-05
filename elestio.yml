@@ -19,3 +19,8 @@ config:
   buildCommand: "docker-compose build"
   buildDir: "/"
   runCommand: "docker-compose up -d"
+  icon: "icon.svg"
+  screenshot: "screenshot.png"
+webUI:
+  - url: "https://[CI_CD_DOMAIN]"
+    label: "Website"  
