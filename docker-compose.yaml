@@ -10,6 +10,11 @@ services:
       - MB_ENABLE_PUBLIC_SHARING=true
       - MB_ENABLE_QUERY_CACHING=true
       - MB_SITE_URL=https://[CI_CD_DOMAIN]
+      - MB_EMAIL_FROM_ADDRESS=[DOMAIN]@vm.elestio.app
+      - MB_EMAIL_SMTP_HOST=172.17.0.1
+      - MB_EMAIL_SMTP_PASSWORD=
+      - MB_EMAIL_SMTP_PORT=
+      - MB_EMAIL_SMTP_SECURITY=none
     volumes:
       - ./files:/opt/app/files
       - ./data:/metabase-data
