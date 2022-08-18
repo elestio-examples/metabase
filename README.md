@@ -11,8 +11,10 @@ Example application and CI/CD pipeline showing how to deploy a Metabase docker c
 You can can open Metabase web UI here:
 
     https://[CI_CD_DOMAIN]/
+    login: [ADMIN_EMAIL] (set in env var ADMIN_EMAIL)
+    password: [ADMIN_PASSWORD] (set in env var ADMIN_PASSWORD)
 
-You will have to finish setup online
+
 
 # Documentation
 
