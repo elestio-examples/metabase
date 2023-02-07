@@ -2,7 +2,7 @@
 set -o allexport; source .env; set +o allexport;
 
 echo "Waiting for Metabase to be ready"
-sleep 60s;
+sleep 120s;
 
 app_target=$(docker-compose port metabase 3000)
 
@@ -12,13 +12,12 @@ app_target=$(docker-compose port metabase 3000)
   echo "------------------------"
 
 
-curl http://$app_target/app/locales/fr.json \
-
+curl http://$app_target/api/session/properties \
   -H 'accept: application/json' \
   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
   -H 'content-type: application/json' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
-  --compressed --connect-timeout 15
+  --compressed --connect-timeout 120
 
     echo "2eme sleep";
   sleep 10s;
@@ -37,7 +36,7 @@ properties=$(curl http://$app_target/api/session/properties \
   echo "------------------------"
 
 
-token=$(echo properties | jq -r '.setup-token')
+token=$(echo properties | jq -r '.["setup-token"]')
 
 echo "token"
   echo "------------------------"
