@@ -2,7 +2,7 @@
 set -o allexport; source .env; set +o allexport;
 
 echo "Waiting for Metabase to be ready"
-sleep 120s;
+sleep 240s;
 
 app_target=$(docker-compose port metabase 3000)
 
@@ -17,11 +17,9 @@ curl http://$app_target/api/session/properties \
   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
   -H 'content-type: application/json' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
-  --compressed --connect-timeout 120
+  --compressed --max-time 60
 
-    echo "2eme sleep";
-  sleep 10s;
-
+    echo "2nd attempt";
 
 properties=$(curl http://$app_target/api/session/properties \
   -H 'accept: application/json' \
