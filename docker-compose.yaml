@@ -2,7 +2,7 @@ version: "3.3"
 services:
   metabase:
     image: metabase/metabase:${SOFTWARE_VERSION_TAG}
-    restart: unless-stopped
+    restart: always
     environment:
       - MB_DB_FILE=/metabase-data/metabase.db
       - MB_ANON_TRACKING_ENABLED=false
