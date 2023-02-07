@@ -1,40 +1,45 @@
-#set env vars
-set -o allexport; source .env; set +o allexport;
+# #set env vars
+# set -o allexport; source .env; set +o allexport;
 
-echo "Waiting for Metabase to be ready"
-sleep 30s;
+# echo "Waiting for Metabase to be ready"
+# sleep 30s;
 
-app_target=$(docker-compose port metabase 3000)
-
-
-properties=$(curl http://$app_target/api/session/properties \
-  -H 'accept: application/json' \
-  -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
-  -H 'content-type: application/json' \
-  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
-  --compressed)
-
-  echo "properties"
-  echo "------------------------"
-  echo $properties
-  echo "------------------------"
+# app_target=$(docker-compose port metabase 3000)
 
 
-token=$(echo properties | jq -r '.setup-token')
+# properties=$(curl http://$app_target/api/session/properties \
+#   -H 'accept: application/json' \
+#   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
+#   -H 'content-type: application/json' \
+#   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
+#   --compressed)
 
-echo "token"
-  echo "------------------------"
-  echo $token
-  echo "------------------------"
+#   echo "properties"
+#   echo "------------------------"
+#   echo $properties
+#   echo "------------------------"
 
 
-curl http://$app_target/api/setup \
-  -H 'accept: application/json' \
-  -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
-  -H 'content-type: application/json' \
-  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
-  --data-raw '{"token":"'${token}'","user":{"password_confirm":"'${ADMIN_PASSWORD}'","password":"'${ADMIN_PASSWORD}'","site_name":"Metabase Instance","email":"'${ADMIN_EMAIL}'","last_name":"Admin","first_name":"Metabase"},"database":null,"invite":null,"prefs":{"site_name":"Metabase Instance","site_locale":"en","allow_tracking":"false"}}' \
-  --compressed
+# token=$(echo properties | jq -r '.setup-token')
+
+# echo "token"
+#   echo "------------------------"
+#   echo $token
+#   echo "------------------------"
+
+
+# curl http://$app_target/api/setup \
+#   -H 'accept: application/json' \
+#   -H 'accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6' \
+#   -H 'content-type: application/json' \
+#   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
+#   --data-raw '{"token":"'${token}'","user":{"password_confirm":"'${ADMIN_PASSWORD}'","password":"'${ADMIN_PASSWORD}'","site_name":"Metabase Instance","email":"'${ADMIN_EMAIL}'","last_name":"Admin","first_name":"Metabase"},"database":null,"invite":null,"prefs":{"site_name":"Metabase Instance","site_locale":"en","allow_tracking":"false"}}' \
+#   --compressed
+
+
+
+
+
 
 
 
