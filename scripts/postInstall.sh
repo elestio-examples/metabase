@@ -1,16 +1,15 @@
 #set env vars
 set -o allexport; source .env; set +o allexport;
 
-docker-compose down;
-
-sleep 5s;
-
-docker-compose up -d;
-
 echo "Waiting for Metabase to be ready"
-sleep 90s;
+sleep 30s;
 
 app_target=$(docker-compose port metabase 3000)
+
+curl http://$app_target/
+
+sleep 10s;
+
 SETUP_TOKEN=$(curl -s -m 5 -X GET -H "Content-Type: application/json" http://$app_target/api/session/properties | jq -r '.["setup-token"]')
 
 curl --header "Content-Type: application/json" \
