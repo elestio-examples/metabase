@@ -83,7 +83,7 @@ Here are some example snippets to help you get started creating a container.
 
 ## Logging
 
-The Elestio Flatnotes Docker image sends the container logs to stdout. To view the logs, you can use the following command:
+The Elestio Metabase Docker image sends the container logs to stdout. To view the logs, you can use the following command:
 
     docker-compose logs -f
 
