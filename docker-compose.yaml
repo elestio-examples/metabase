@@ -9,7 +9,7 @@ services:
       - MB_ENABLE_EMBEDDING=true
       - MB_ENABLE_PUBLIC_SHARING=true
       - MB_ENABLE_QUERY_CACHING=true
-      - MB_SITE_URL=https://[CI_CD_DOMAIN]
+      - MB_SITE_URL=${BASE_URL}
       - MB_EMAIL_FROM_ADDRESS=[DOMAIN]@vm.elestio.app
       - MB_EMAIL_SMTP_HOST=172.17.0.1
       - MB_EMAIL_SMTP_PASSWORD=
